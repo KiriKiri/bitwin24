@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2019 The PIVX developers
+# Copyright (c) 2019 The Bitwin24 developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -10,10 +10,10 @@ coinstake input prevout is double spent in one of the other transactions in the 
 
 from time import sleep
 
-from fake_stake.base_test import PIVX_FakeStakeTest
+from fake_stake.base_test import Bitwin24_FakeStakeTest
 
 
-class PoSDoubleSpend(PIVX_FakeStakeTest):
+class PoSDoubleSpend(Bitwin24_FakeStakeTest):
 
     def run_test(self):
         self.description = "Covers the scenario of a valid PoS block with a valid coinstake transaction where the coinstake input prevout is double spent in one of the other transactions in the same block."

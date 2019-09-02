@@ -1,11 +1,11 @@
 Sample configuration files for:
 ```
-SystemD: pivxd.service
-Upstart: pivxd.conf
-OpenRC:  pivxd.openrc
-         pivxd.openrcconf
-CentOS:  pivxd.init
-macOS:    org.pivx.pivxd.plist
+SystemD: bitwin24d.service
+Upstart: bitwin24d.conf
+OpenRC:  bitwin24d.openrc
+         bitwin24d.openrcconf
+CentOS:  bitwin24d.init
+macOS:    org.bitwin24.bitwin24d.plist
 ```
 have been made available to assist packagers in creating node packages here.
 

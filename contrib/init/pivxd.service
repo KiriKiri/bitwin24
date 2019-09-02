@@ -5,19 +5,19 @@
 # See "man systemd.service" for details.
 
 # Note that almost all daemon options could be specified in
-# /etc/pivx/pivx.conf
+# /etc/bitwin24/bitwin24.conf
 
 [Unit]
-Description=PIVX daemon
+Description=Bitwin24 daemon
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/pivxd -daemon -conf=/etc/pivx/pivx.conf -pid=/run/pivxd/pivxd.pid
-# Creates /run/pivxd owned by pivx
-RuntimeDirectory=pivxd
-User=pivx
+ExecStart=/usr/bin/bitwin24d -daemon -conf=/etc/bitwin24/bitwin24.conf -pid=/run/bitwin24d/bitwin24d.pid
+# Creates /run/bitwin24d owned by bitwin24
+RuntimeDirectory=bitwin24d
+User=bitwin24
 Type=forking
-PIDFile=/run/pivxd/pivxd.pid
+PIDFile=/run/bitwin24d/bitwin24d.pid
 Restart=on-failure
 
 # Hardening measures

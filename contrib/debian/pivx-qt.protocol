@@ -1,6 +1,6 @@
 [Protocol]
-exec=pivx-qt '%u'
-protocol=pivx
+exec=bitwin24-qt '%u'
+protocol=bitwin24
 input=none
 output=none
 helper=true

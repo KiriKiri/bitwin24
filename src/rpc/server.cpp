@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2019 The PIVX developers
+// Copyright (c) 2015-2019 The Bitwin24 developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -265,11 +265,11 @@ UniValue stop(const UniValue& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw std::runtime_error(
             "stop\n"
-            "\nStop PIVX server.");
+            "\nStop Bitwin24 server.");
     // Event loop will exit after current HTTP requests have been handled, so
     // this reply will get back to the client.
     StartShutdown();
-    return "PIVX server stopping";
+    return "Bitwin24 server stopping";
 }
 
 
@@ -362,35 +362,35 @@ static const CRPCCommand vRPCCommands[] =
         { "hidden",             "waitforblock",           &waitforblock,           true,  true,  false  },
         { "hidden",             "waitforblockheight",     &waitforblockheight,     true,  true,  false  },
 
-        /* PIVX features */
-        {"pivx", "listmasternodes", &listmasternodes, true, true, false},
-        {"pivx", "getmasternodecount", &getmasternodecount, true, true, false},
-        {"pivx", "masternodeconnect", &masternodeconnect, true, true, false},
-        {"pivx", "createmasternodebroadcast", &createmasternodebroadcast, true, true, false},
-        {"pivx", "decodemasternodebroadcast", &decodemasternodebroadcast, true, true, false},
-        {"pivx", "relaymasternodebroadcast", &relaymasternodebroadcast, true, true, false},
-        {"pivx", "masternodecurrent", &masternodecurrent, true, true, false},
-        {"pivx", "masternodedebug", &masternodedebug, true, true, false},
-        {"pivx", "startmasternode", &startmasternode, true, true, false},
-        {"pivx", "createmasternodekey", &createmasternodekey, true, true, false},
-        {"pivx", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
-        {"pivx", "listmasternodeconf", &listmasternodeconf, true, true, false},
-        {"pivx", "getmasternodestatus", &getmasternodestatus, true, true, false},
-        {"pivx", "getmasternodewinners", &getmasternodewinners, true, true, false},
-        {"pivx", "getmasternodescores", &getmasternodescores, true, true, false},
-        {"pivx", "preparebudget", &preparebudget, true, true, false},
-        {"pivx", "submitbudget", &submitbudget, true, true, false},
-        {"pivx", "mnbudgetvote", &mnbudgetvote, true, true, false},
-        {"pivx", "getbudgetvotes", &getbudgetvotes, true, true, false},
-        {"pivx", "getnextsuperblock", &getnextsuperblock, true, true, false},
-        {"pivx", "getbudgetprojection", &getbudgetprojection, true, true, false},
-        {"pivx", "getbudgetinfo", &getbudgetinfo, true, true, false},
-        {"pivx", "mnbudgetrawvote", &mnbudgetrawvote, true, true, false},
-        {"pivx", "mnfinalbudget", &mnfinalbudget, true, true, false},
-        {"pivx", "checkbudgets", &checkbudgets, true, true, false},
-        {"pivx", "mnsync", &mnsync, true, true, false},
-        {"pivx", "spork", &spork, true, true, false},
-        {"pivx", "getpoolinfo", &getpoolinfo, true, true, false},
+        /* Bitwin24 features */
+        {"bitwin24", "listmasternodes", &listmasternodes, true, true, false},
+        {"bitwin24", "getmasternodecount", &getmasternodecount, true, true, false},
+        {"bitwin24", "masternodeconnect", &masternodeconnect, true, true, false},
+        {"bitwin24", "createmasternodebroadcast", &createmasternodebroadcast, true, true, false},
+        {"bitwin24", "decodemasternodebroadcast", &decodemasternodebroadcast, true, true, false},
+        {"bitwin24", "relaymasternodebroadcast", &relaymasternodebroadcast, true, true, false},
+        {"bitwin24", "masternodecurrent", &masternodecurrent, true, true, false},
+        {"bitwin24", "masternodedebug", &masternodedebug, true, true, false},
+        {"bitwin24", "startmasternode", &startmasternode, true, true, false},
+        {"bitwin24", "createmasternodekey", &createmasternodekey, true, true, false},
+        {"bitwin24", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
+        {"bitwin24", "listmasternodeconf", &listmasternodeconf, true, true, false},
+        {"bitwin24", "getmasternodestatus", &getmasternodestatus, true, true, false},
+        {"bitwin24", "getmasternodewinners", &getmasternodewinners, true, true, false},
+        {"bitwin24", "getmasternodescores", &getmasternodescores, true, true, false},
+        {"bitwin24", "preparebudget", &preparebudget, true, true, false},
+        {"bitwin24", "submitbudget", &submitbudget, true, true, false},
+        {"bitwin24", "mnbudgetvote", &mnbudgetvote, true, true, false},
+        {"bitwin24", "getbudgetvotes", &getbudgetvotes, true, true, false},
+        {"bitwin24", "getnextsuperblock", &getnextsuperblock, true, true, false},
+        {"bitwin24", "getbudgetprojection", &getbudgetprojection, true, true, false},
+        {"bitwin24", "getbudgetinfo", &getbudgetinfo, true, true, false},
+        {"bitwin24", "mnbudgetrawvote", &mnbudgetrawvote, true, true, false},
+        {"bitwin24", "mnfinalbudget", &mnfinalbudget, true, true, false},
+        {"bitwin24", "checkbudgets", &checkbudgets, true, true, false},
+        {"bitwin24", "mnsync", &mnsync, true, true, false},
+        {"bitwin24", "spork", &spork, true, true, false},
+        {"bitwin24", "getpoolinfo", &getpoolinfo, true, true, false},
 
 #ifdef ENABLE_WALLET
         /* Wallet */
@@ -461,11 +461,11 @@ static const CRPCCommand vRPCCommands[] =
         {"zerocoin", "exportzerocoins", &exportzerocoins, false, false, true},
         {"zerocoin", "reconsiderzerocoins", &reconsiderzerocoins, false, false, true},
         {"zerocoin", "getspentzerocoinamount", &getspentzerocoinamount, false, false, false},
-        {"zerocoin", "getzpivseed", &getzpivseed, false, false, true},
-        {"zerocoin", "setzpivseed", &setzpivseed, false, false, true},
+        {"zerocoin", "getzbwiseed", &getzbwiseed, false, false, true},
+        {"zerocoin", "setzbwiseed", &setzbwiseed, false, false, true},
         {"zerocoin", "generatemintlist", &generatemintlist, false, false, true},
-        {"zerocoin", "searchdzpiv", &searchdzpiv, false, false, true},
-        {"zerocoin", "dzpivstate", &dzpivstate, false, false, true},
+        {"zerocoin", "searchdzbwi", &searchdzbwi, false, false, true},
+        {"zerocoin", "dzbwistate", &dzbwistate, false, false, true},
         {"zerocoin", "clearspendcache", &clearspendcache, false, false, true}
 
 #endif // ENABLE_WALLET
@@ -630,7 +630,7 @@ std::vector<std::string> CRPCTable::listCommands() const
 
 std::string HelpExampleCli(std::string methodname, std::string args)
 {
-    return "> pivx-cli " + methodname + " " + args + "\n";
+    return "> bitwin24-cli " + methodname + " " + args + "\n";
 }
 
 std::string HelpExampleRpc(std::string methodname, std::string args)
