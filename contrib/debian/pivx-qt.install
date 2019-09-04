@@ -1,6 +1,6 @@
-usr/local/bin/pivx-qt usr/bin
-share/pixmaps/pivx32.xpm usr/share/pixmaps
-share/pixmaps/pivx16.xpm usr/share/pixmaps
-share/pixmaps/pivx128.png usr/share/pixmaps
-debian/pivx-qt.desktop usr/share/applications
-debian/pivx-qt.protocol usr/share/kde4/services/
+usr/local/bin/bitwin24-qt usr/bin
+share/pixmaps/bitwin2432.xpm usr/share/pixmaps
+share/pixmaps/bitwin2416.xpm usr/share/pixmaps
+share/pixmaps/bitwin24128.png usr/share/pixmaps
+debian/bitwin24-qt.desktop usr/share/applications
+debian/bitwin24-qt.protocol usr/share/kde4/services/

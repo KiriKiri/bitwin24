@@ -1,5 +1,5 @@
 // Copyright (c) 2012-2013 The PPCoin developers
-// Copyright (c) 2015-2019 The PIVX developers
+// Copyright (c) 2015-2019 The Bitwin24 developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -12,7 +12,7 @@
 #include "util.h"
 #include "stakeinput.h"
 #include "utilmoneystr.h"
-#include "zpivchain.h"
+#include "zbwichain.h"
 
 // v1 modifier interval.
 static const int64_t OLD_MODIFIER_INTERVAL = 2087;
@@ -335,7 +335,7 @@ bool GetHashProofOfStake(const CBlockIndex* pindexPrev, CStakeInput* stake, cons
         LogPrint("staking", "%s :{ nStakeModifier=%s\n"
                             "nStakeModifierHeight=%s\n"
                             "}\n",
-            __func__, HexStr(modifier_ss), ((stake->IsZPIV()) ? "Not available" : std::to_string(stake->getStakeModifierHeight())));
+            __func__, HexStr(modifier_ss), ((stake->IsZBWI()) ? "Not available" : std::to_string(stake->getStakeModifierHeight())));
     }
     return true;
 }
@@ -390,22 +390,22 @@ bool Stake(const CBlockIndex* pindexPrev, CStakeInput* stakeInput, unsigned int 
 bool ContextualCheckZerocoinStake(int nPreviousBlockHeight, CStakeInput* stake)
 {
     if (nPreviousBlockHeight < Params().Zerocoin_Block_V2_Start())
-        return error("%s : zPIV stake block is less than allowed start height", __func__);
+        return error("%s : zBWI stake block is less than allowed start height", __func__);
 
-    if (CZPivStake* zPIV = dynamic_cast<CZPivStake*>(stake)) {
-        CBlockIndex* pindexFrom = zPIV->GetIndexFrom();
+    if (CZBWIStake* zBWI = dynamic_cast<CZBWIStake*>(stake)) {
+        CBlockIndex* pindexFrom = zBWI->GetIndexFrom();
         if (!pindexFrom)
-            return error("%s : failed to get index associated with zPIV stake checksum", __func__);
+            return error("%s : failed to get index associated with zBWI stake checksum", __func__);
 
         int depth = (nPreviousBlockHeight + 1) - pindexFrom->nHeight;
         if (depth < Params().Zerocoin_RequiredStakeDepth())
-            return error("%s : zPIV stake does not have required confirmation depth. Current height %d,  stakeInput height %d.", __func__, nPreviousBlockHeight, pindexFrom->nHeight);
+            return error("%s : zBWI stake does not have required confirmation depth. Current height %d,  stakeInput height %d.", __func__, nPreviousBlockHeight, pindexFrom->nHeight);
 
         //The checksum needs to be the exact checksum from 200 blocks ago
         uint256 nCheckpoint200 = chainActive[nPreviousBlockHeight - Params().Zerocoin_RequiredStakeDepth()]->nAccumulatorCheckpoint;
-        uint32_t nChecksum200 = ParseChecksum(nCheckpoint200, libzerocoin::AmountToZerocoinDenomination(zPIV->GetValue()));
-        if (nChecksum200 != zPIV->GetChecksum())
-            return error("%s : accumulator checksum is different than the block 200 blocks previous. stake=%d block200=%d", __func__, zPIV->GetChecksum(), nChecksum200);
+        uint32_t nChecksum200 = ParseChecksum(nCheckpoint200, libzerocoin::AmountToZerocoinDenomination(zBWI->GetValue()));
+        if (nChecksum200 != zBWI->GetChecksum())
+            return error("%s : accumulator checksum is different than the block 200 blocks previous. stake=%d block200=%d", __func__, zBWI->GetChecksum(), nChecksum200);
     } else {
         return error("%s : dynamic_cast of stake ptr failed", __func__);
     }
@@ -427,10 +427,10 @@ bool initStakeInput(const CBlock block, std::unique_ptr<CStakeInput>& stake, int
         if (spend.getSpendType() != libzerocoin::SpendType::STAKE)
             return error("%s : spend is using the wrong SpendType (%d)", __func__, (int)spend.getSpendType());
 
-        stake = std::unique_ptr<CStakeInput>(new CZPivStake(spend));
+        stake = std::unique_ptr<CStakeInput>(new CZBWIStake(spend));
 
         if (!ContextualCheckZerocoinStake(nPreviousBlockHeight, stake.get()))
-            return error("%s : staked zPIV fails context checks", __func__);
+            return error("%s : staked zBWI fails context checks", __func__);
     } else {
         // First try finding the previous transaction in database
         uint256 hashBlock;
@@ -443,9 +443,9 @@ bool initStakeInput(const CBlock block, std::unique_ptr<CStakeInput>& stake, int
         if (!VerifyScript(txin.scriptSig, txPrev.vout[txin.prevout.n].scriptPubKey, STANDARD_SCRIPT_VERIFY_FLAGS, TransactionSignatureChecker(&tx, 0)))
             return error("%s : VerifySignature failed on coinstake %s", __func__, tx.GetHash().ToString().c_str());
 
-        CPivStake* pivInput = new CPivStake();
-        pivInput->SetInput(txPrev, txin.prevout.n);
-        stake = std::unique_ptr<CStakeInput>(pivInput);
+        CBWIStake* bwiInput = new CBWIStake();
+        bwiInput->SetInput(txPrev, txin.prevout.n);
+        stake = std::unique_ptr<CStakeInput>(bwiInput);
     }
     return true;
 }

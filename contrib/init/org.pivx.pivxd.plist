@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>org.pivx.pivxd</string>
+	<string>org.bitwin24.bitwin24d</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/usr/local/bin/pivxd</string>
+		<string>/usr/local/bin/bitwin24d</string>
 	</array>
 	<key>RunAtLoad</key>
 	<true/>

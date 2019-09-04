@@ -1,13 +1,13 @@
 [Desktop Entry]
 Version=1.0
-Name=PIVX Core
-Comment=PIVX P2P Cryptocurrency
-Comment[fr]=PIVX, monnaie virtuelle cryptographique pair à pair
-Comment[tr]=PIVX, eşten eşe kriptografik sanal para birimi
-Exec=pivx-qt %u
+Name=Bitwin24 Core
+Comment=Bitwin24 P2P Cryptocurrency
+Comment[fr]=Bitwin24, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Bitwin24, eşten eşe kriptografik sanal para birimi
+Exec=bitwin24-qt %u
 Terminal=false
 Type=Application
-Icon=pivx128
-MimeType=x-scheme-handler/pivx;
+Icon=bitwin24128
+MimeType=x-scheme-handler/bitwin24;
 Categories=Office;Finance;
-StartupWMClass=Pivx-qt
+StartupWMClass=Bitwin24-qt
