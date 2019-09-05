@@ -46,11 +46,11 @@ config file): *Needed for Tor version 0.2.7.0 and older versions of Tor only. Fo
 versions of Tor see [Section 3](#3-automatically-listen-on-tor).*
 
 	HiddenServiceDir /var/lib/tor/bitwin24-service/
-	HiddenServicePort 51472 127.0.0.1:51472
+	HiddenServicePort 24072 127.0.0.1:24072
 	HiddenServicePort 61472 127.0.0.1:61472
 
 The directory can be different of course, but (both) port numbers should be equal to
-your bitwin24d's P2P listen port (51472 by default).
+your bitwin24d's P2P listen port (24072 by default).
 
 	-externalip=X   You can tell bitwin24 about its publicly reachable address using
 	                this option, and this can be a .onion address. Given the above
@@ -85,7 +85,7 @@ as well, use `discover` instead:
 
 	./bitwin24d ... -discover
 
-and open port 51472 on your firewall (or use -upnp).
+and open port 24072 on your firewall (or use -upnp).
 
 If you only want to use Tor to reach .onion addresses, but not use it as a proxy
 for normal IPv4/IPv6 communication, use:
