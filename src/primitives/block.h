@@ -147,7 +147,8 @@ public:
 
     bool IsProofOfWork() const
     {
-        return !IsProofOfStake();
+        return false;
+        //return !IsProofOfStake();
     }
 
     bool IsZerocoinStake() const;
