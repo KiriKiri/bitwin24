@@ -52,7 +52,7 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256("0x00000558c75ee47b4a05168fb788ec278c6e9036cbd7c6aaaff6c27257ea11f6"))
+    (0, uint256("0x000000327bb144ca3aeb3f79e992cae6eb883a362380d773043be0a5b9080d82"))
 ;
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
@@ -64,7 +64,7 @@ static const Checkpoints::CCheckpointData data = {
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
     boost::assign::map_list_of
-    (0, uint256("0x00000d8d79b853af093155fe7831b84d453d781bd6376bdb2f4f6dd7c8886bf5"))
+    (0, uint256("0x0000002462370db28770c762425f086c3c2dbc01e3d96838cdffa60b0c106550"))
 ;
 static const Checkpoints::CCheckpointData dataTestnet = {
     &mapCheckpointsTestnet,
@@ -73,7 +73,7 @@ static const Checkpoints::CCheckpointData dataTestnet = {
     250};
 
 static Checkpoints::MapCheckpoints mapCheckpointsRegtest =
-    boost::assign::map_list_of(0, uint256("0x5dea40303891125677f83e101c449fae39296d677d004fd5de20b7d0ad5a5397"));
+    boost::assign::map_list_of(0, uint256("0x000000829c8ec9ad7c4d16a1e02a3243dd7ee92d2b21ac9a416129ef0441dbd4"));
 static const Checkpoints::CCheckpointData dataRegtest = {
     &mapCheckpointsRegtest,
     1567706801,
@@ -183,19 +183,19 @@ public:
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << std::vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
         txNew.vout[0].nValue = 5 * COIN;
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex("0455fd6e71b8d6de5d66ff921e18ac49a51d4c6854790e127ff4471b2c6dd533af1e40bf88495bdde0ebc6f74174b91c6fff6d132b27c8f1bcbabac0e089e47482") << OP_CHECKSIG;
+        txNew.vout[0].scriptPubKey = CScript() << ParseHex("045777AA773E88BBBF2B31FB859D4E3C73B527B6F1FB12FFFDD6B331AB585C1CBD0CCBAF0E40B947235A49B04A806AE3C38FBC23BAB96CCF3252A312BE0BB0E61C") << OP_CHECKSIG;
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 5;
         genesis.nTime = 1567706799;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 1196600;
+        genesis.nNonce = 36428729;
 
         hashGenesisBlock = genesis.GetHash();
 
-        assert(hashGenesisBlock == uint256("0x00000558c75ee47b4a05168fb788ec278c6e9036cbd7c6aaaff6c27257ea11f6"));
-        assert(genesis.hashMerkleRoot == uint256("0xb50bc743530a4bcd5d0ab9ecddd681c67ed828ca0396ed5c77b4bde0b9151331"));
+        assert(hashGenesisBlock == uint256("0x000000327bb144ca3aeb3f79e992cae6eb883a362380d773043be0a5b9080d82"));
+        assert(genesis.hashMerkleRoot == uint256("0x38a39e4b294b843a2c2812e42fc1c9e182cc22dc87d72413fefc5f0712a59027"));
 
         vSeeds.clear();
 
@@ -303,11 +303,11 @@ public:
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
         genesis.nTime = 1567706800;
-        genesis.nNonce = 1978652;
+        genesis.nNonce = 1629752;
 
         hashGenesisBlock = genesis.GetHash();
 
-        assert(hashGenesisBlock == uint256("0x00000d8d79b853af093155fe7831b84d453d781bd6376bdb2f4f6dd7c8886bf5"));
+        assert(hashGenesisBlock == uint256("0x0000002462370db28770c762425f086c3c2dbc01e3d96838cdffa60b0c106550"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -394,11 +394,11 @@ public:
         //! Modify the regtest genesis block so the timestamp is valid for a later start.
         genesis.nTime = 1567706801;
         genesis.nBits = 0x207fffff;
-        genesis.nNonce = 2;
+        genesis.nNonce = 35972206;
 
         hashGenesisBlock = genesis.GetHash();
 
-        assert(hashGenesisBlock == uint256("0x5dea40303891125677f83e101c449fae39296d677d004fd5de20b7d0ad5a5397"));
+        assert(hashGenesisBlock == uint256("0x000000829c8ec9ad7c4d16a1e02a3243dd7ee92d2b21ac9a416129ef0441dbd4"));
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Testnet mode doesn't have any DNS seeds.
